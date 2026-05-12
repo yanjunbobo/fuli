@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://trendywave.com/sitemap.xml
+Sitemap: https://stylepulsepicks.com/sitemap.xml
