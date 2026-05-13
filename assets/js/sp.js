@@ -1,21 +1,11 @@
 // StylePulse Picks — Affiliate Link Handler (sp.js)
 // Handles data-affiliate attribute for product cards
-// Replace placeholder hrefs with actual affiliate links
 
 (function() {
     'use strict';
 
-    // Affiliate link mappings (replace with actual affiliate IDs)
-    const affiliateLinks = {
-        'blazer-001': 'https://example.com/product/blazer-001?aff=stylepulse',
-        'sneakers-001': 'https://example.com/product/sneakers-001?aff=stylepulse',
-        'jewelry-001': 'https://example.com/product/jewelry-001?aff=stylepulse',
-        'jeans-001': 'https://example.com/product/jeans-001?aff=stylepulse',
-        'hoodie-001': 'https://example.com/product/hoodie-001?aff=stylepulse',
-        'watch-001': 'https://example.com/product/watch-001?aff=stylepulse',
-        'boots-001': 'https://example.com/product/boots-001?aff=stylepulse',
-        'tote-001': 'https://example.com/product/tote-001?aff=stylepulse'
-    };
+    // MuleBuy affiliate URL (register page with ref ID)
+    const AFFILIATE_URL = 'https://mulebuy.com/register?ref=201219348';
 
     // Initialize affiliate buttons on page load
     function initAffiliateLinks() {
@@ -24,22 +14,19 @@
         affiliateButtons.forEach(button => {
             const productId = button.getAttribute('data-product');
 
-            if (productId && affiliateLinks[productId]) {
-                // Convert button to anchor if needed, or set href
-                const link = document.createElement('a');
-                link.href = affiliateLinks[productId];
-                link.className = button.className;
-                link.textContent = button.textContent;
-                link.setAttribute('data-affiliate', 'true');
-                link.setAttribute('data-product', productId);
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener sponsored');
+            // If button has href="#", replace with mulebuy URL
+            if (button.href === '#' || button.href === window.location.href + '#') {
+                button.href = AFFILIATE_URL;
+                button.setAttribute('target', '_blank');
+                button.setAttribute('rel', 'noopener sponsored');
+            }
 
-                button.parentNode.replaceChild(link, button);
-
-                console.log('StylePulse: Affiliate link replaced for', productId);
-            } else if (productId) {
-                console.warn('StylePulse: No affiliate link found for product:', productId);
+            // If button has a product ID, set mulebuy URL
+            if (productId) {
+                button.href = AFFILIATE_URL;
+                button.setAttribute('target', '_blank');
+                button.setAttribute('rel', 'noopener sponsored');
+                console.log('StylePulse: Affiliate link set for', productId);
             }
         });
     }
