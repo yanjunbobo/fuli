@@ -633,4 +633,18 @@ ul { list-style: none; }
 
 @media (min-width: 1024px) {
     .hero-content h1 { font-size: 3.5rem; }
+
+
+/* Image credit for sourced photos */
+.image-credit {
+    font-size: 0.75rem;
+    color: #999;
+    text-align: center;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+.image-credit a {
+    color: #666;
+    text-decoration: underline;
+}
 }
