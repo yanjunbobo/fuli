@@ -45,6 +45,8 @@
             const productId = affiliateElement.getAttribute('data-product');
             if (productId) {
                 trackAffiliateClick(productId);
+                // Navigate to affiliate URL
+                window.open(AFFILIATE_URL, '_blank', 'noopener,noreferrer');
             }
         }
     });
